@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface QuizAttemptDao extends JpaRepository<QuizAttempt, Integer> {
 
-    List<QuizAttempt> findByUserId(Integer userId);
+    List<QuizAttempt> findByUserIdOrderByAttemptedAtDesc(Integer userId);
 
 }

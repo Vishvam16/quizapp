@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
 import java.util.List;
+import com.project.quizapp.dto.AttemptHistoryDTO;
+import com.project.quizapp.dto.StatisticsDTO;
 
 @RestController
 @RequestMapping("/quiz")
@@ -26,12 +28,12 @@ public class QuizController {
 
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}/questions")
     public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id){
         return quizService.getQuizQuestions(id);
     }
 
-    @PostMapping("/submit/{id}")
+    @PostMapping("/{id}/submit")
     public ResponseEntity<Integer> submitQuiz(
             @PathVariable Integer id,
             @RequestBody List<Response> responses,
@@ -47,5 +49,20 @@ public class QuizController {
     @GetMapping("/all")
     public ResponseEntity<List<QuizDTO>> getAllQuizzes() {
         return quizService.getAllQuizzes();
+    }
+
+    @GetMapping("/history")
+    public ResponseEntity<List<AttemptHistoryDTO>> getHistory(
+            Authentication authentication) {
+
+        return quizService.getHistory(authentication.getName());
+    }
+
+    @GetMapping("/statistics")
+    public ResponseEntity<StatisticsDTO> getStatistics(
+            Authentication authentication) {
+
+        return quizService.getStatistics(authentication.getName());
+
     }
 }

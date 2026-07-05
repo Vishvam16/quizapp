@@ -16,6 +16,8 @@ import com.project.quizapp.dao.UserDao;
 import com.project.quizapp.model.QuizAttempt;
 import com.project.quizapp.model.User;
 import java.time.LocalDateTime;
+import com.project.quizapp.dto.AttemptHistoryDTO;
+import com.project.quizapp.dto.StatisticsDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,5 +112,73 @@ public class QuizService {
                 .toList();
 
         return ResponseEntity.ok(response);
+    }
+
+    public ResponseEntity<List<AttemptHistoryDTO>> getHistory(String email) {
+
+        User user = userDao.findByEmail(email)
+                .orElseThrow();
+
+        List<AttemptHistoryDTO> history = quizAttemptDao
+                .findByUserIdOrderByAttemptedAtDesc(user.getId())
+                .stream()
+                .map(attempt -> new AttemptHistoryDTO(
+                        attempt.getQuiz().getId(),
+                        attempt.getQuiz().getTitle(),
+                        attempt.getScore(),
+                        attempt.getTotalQuestions(),
+                        attempt.getAttemptedAt()
+                ))
+                .toList();
+
+        return ResponseEntity.ok(history);
+    }
+
+    public ResponseEntity<StatisticsDTO> getStatistics(String email) {
+
+        User user = userDao.findByEmail(email)
+                .orElseThrow();
+
+        List<QuizAttempt> attempts =
+                quizAttemptDao.findByUserIdOrderByAttemptedAtDesc(user.getId());
+
+        if (attempts.isEmpty()) {
+
+            return ResponseEntity.ok(
+                    new StatisticsDTO(
+                            0,
+                            0.0,
+                            0,
+                            0
+                    )
+            );
+
+        }
+
+        int highestScore = attempts.stream()
+                .mapToInt(QuizAttempt::getScore)
+                .max()
+                .orElse(0);
+
+        double averageScore = attempts.stream()
+                .mapToInt(QuizAttempt::getScore)
+                .average()
+                .orElse(0);
+
+        int totalAttempts = attempts.size();
+
+        int totalQuizzesTaken = (int) attempts.stream()
+                .map(a -> a.getQuiz().getId())
+                .distinct()
+                .count();
+
+        return ResponseEntity.ok(
+                new StatisticsDTO(
+                        highestScore,
+                        Math.round(averageScore * 100.0) / 100.0,
+                        totalAttempts,
+                        totalQuizzesTaken
+                )
+        );
     }
 }
