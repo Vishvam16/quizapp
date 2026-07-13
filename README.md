@@ -113,20 +113,19 @@ quizapp/
 | GET | `/quiz/history` |
 | GET | `/quiz/statistics` |
 
----
-
 ## 📸 Screenshots
 
-> Add screenshots of:
->
-> - Login Page
-> - Registration Page
-> - Dashboard
-> - Quiz Page
-> - Result Page
-> - Statistics Page
+| Login | Dashboard |
+|--------|-----------|
+| ![](screenshots/login.png) | ![](screenshots/dashboard.png) |
 
----
+| Quiz | Result |
+|------|--------|
+| ![](screenshots/quiz.png) | ![](screenshots/result.png) |
+
+| Statistics |
+|------------|
+| ![](screenshots/statistics.png) |
 
 ## 🚀 Future Enhancements
 
