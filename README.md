@@ -7,6 +7,8 @@ A full-stack Quiz Application built with **Spring Boot**, **React**, and **Postg
 [![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)](https://quizapp-delta-sand.vercel.app/)
 [![GitHub](https://img.shields.io/badge/Source-Code-black?style=for-the-badge&logo=github)](https://github.com/Vishvam16/quizapp)
 
+
+## 🏗️ Project Structure
 ```
 
                     +----------------------+
