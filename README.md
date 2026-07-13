@@ -1,37 +1,53 @@
 # 🎯 QuizApp
 
-A full-stack Quiz Application built using **Spring Boot** and **React** that allows users to register, log in securely using JWT authentication, attempt quizzes, and view their quiz history and statistics.
+A full-stack Quiz Application built with **Spring Boot**, **React**, and **PostgreSQL**. The application provides secure JWT-based authentication, quiz participation, score tracking, and detailed user statistics through a clean and responsive interface.
+
+## 🌐 Live Demo
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)](https://quizapp-delta-sand.vercel.app/)
+[![GitHub](https://img.shields.io/badge/Source-Code-black?style=for-the-badge&logo=github)](https://github.com/Vishvam16/quizapp)
+
+```
+
+                    +----------------------+
+                    |      React (Vite)    |
+                    |      Frontend        |
+                    |      (Vercel)        |
+                    +----------+-----------+
+                               |
+                        REST APIs (JWT)
+                               |
+                               ▼
+                    +----------------------+
+                    | Spring Boot Backend  |
+                    |       (Render)       |
+                    +----------+-----------+
+                               |
+                         Spring Data JPA
+                               |
+                               ▼
+                    +----------------------+
+                    |     PostgreSQL       |
+                    +----------------------+
+
+```
+
+## ✨ Features
+
+- 🔐 Secure JWT Authentication
+- 👤 User Registration & Login
+- 📝 Attempt Multiple Quizzes
+- ⏱️ Timed Quiz Experience
+- 📊 Instant Score Calculation
+- 📈 Quiz History
+- 📉 Performance Statistics
+- 📱 Responsive Material UI Interface
 
 ---
 
-## 🚀 Features
+## 🛠️ Tech Stack
 
-### Authentication
-- User Registration
-- User Login
-- JWT-based Authentication
-- Password Encryption using BCrypt
-- Protected API Endpoints
-
-### Quiz
-- View Available Quizzes
-- Attempt Quizzes
-- Timer for Quiz
-- Automatic Score Calculation
-- View Result after Submission
-
-### Dashboard
-- Recent Quiz Attempts
-- Quiz History
-- Highest Score
-- Average Score
-- Total Quizzes Attempted
-
----
-
-# 🛠 Tech Stack
-
-## Backend
+### Backend
 - Java 17
 - Spring Boot
 - Spring Security
@@ -41,135 +57,48 @@ A full-stack Quiz Application built using **Spring Boot** and **React** that all
 - PostgreSQL
 - Maven
 
-## Frontend
+### Frontend
 - React
 - Vite
 - Material UI
-- React Router
 - Axios
+- React Router
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
-```
-quizapp
+```text
+quizapp/
 │
-├── src                        # Spring Boot Backend
-│
-├── quiz-app-frontend          # React Frontend
-│
+├── src/                     # Spring Boot Backend
+├── quiz-app-frontend/       # React Frontend
 ├── pom.xml
-├── mvnw
 └── README.md
 ```
 
 ---
 
-# ⚙️ Backend Setup
+## 🔐 Authentication
 
-### Clone Repository
-
-```bash
-git clone https://github.com/Vishvam16/quizapp.git
-```
-
-### Go to project
-
-```bash
-cd quizapp
-```
-
-### Configure PostgreSQL
-
-Create a PostgreSQL database and update:
-
-```
-src/main/resources/application.properties
-```
-
-Example:
-
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/quizdb
-spring.datasource.username=postgres
-spring.datasource.password=your_password
-```
+- User Registration
+- User Login
+- JWT Token Generation
+- Protected Routes
+- Password Encryption using BCrypt
 
 ---
 
-### Run Backend
+## 📡 REST API
 
-```bash
-./mvnw spring-boot:run
-```
-
-or
-
-```bash
-mvn spring-boot:run
-```
-
-Backend runs on
-
-```
-http://localhost:8080
-```
-
----
-
-# 💻 Frontend Setup
-
-Navigate to frontend
-
-```bash
-cd quiz-app-frontend
-```
-
-Install dependencies
-
-```bash
-npm install
-```
-
-Run frontend
-
-```bash
-npm run dev
-```
-
-Frontend runs on
-
-```
-http://localhost:5173
-```
-
----
-
-# 🔐 Authentication
-
-The application uses:
-
-- Spring Security
-- JWT Tokens
-- BCrypt Password Encoder
-
-Users must authenticate before accessing quiz-related APIs.
-
----
-
-# 📡 API Endpoints
-
-## Authentication
+### Authentication
 
 | Method | Endpoint |
 |---------|----------|
 | POST | `/user/register` |
 | POST | `/user/login` |
 
----
-
-## Quiz
+### Quiz
 
 | Method | Endpoint |
 |---------|----------|
@@ -177,9 +106,7 @@ Users must authenticate before accessing quiz-related APIs.
 | GET | `/quiz/{id}/questions` |
 | POST | `/quiz/{id}/submit` |
 
----
-
-## User
+### User
 
 | Method | Endpoint |
 |---------|----------|
@@ -188,58 +115,33 @@ Users must authenticate before accessing quiz-related APIs.
 
 ---
 
-# 📷 Screenshots
+## 📸 Screenshots
 
-Add screenshots here after uploading them.
-
-Example:
-
-```
-screenshots/
-    login.png
-    dashboard.png
-    quiz.png
-    result.png
-```
-
-Then use
-
-```markdown
-## Login
-
-![Login](screenshots/login.png)
-
-## Dashboard
-
-![Dashboard](screenshots/dashboard.png)
-
-## Quiz
-
-![Quiz](screenshots/quiz.png)
-
-## Result
-
-![Result](screenshots/result.png)
-```
+> Add screenshots of:
+>
+> - Login Page
+> - Registration Page
+> - Dashboard
+> - Quiz Page
+> - Result Page
+> - Statistics Page
 
 ---
 
-# 📈 Future Improvements
+## 🚀 Future Enhancements
 
-- Admin Panel
-- Create/Edit/Delete Quiz
+- Admin dashboard for quiz management
+- Create, edit, and delete quizzes
+- Quiz categories and difficulty levels
 - Leaderboard
-- Difficulty Levels
-- Categories
-- Email Verification
-- Password Reset
-- Pagination
-- Docker Deployment
-- CI/CD Pipeline
+- User profile page
+- Search and filter quizzes
+- Docker Compose setup
+- GitHub Actions CI/CD
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Vishvam Kunjadiya**
 
